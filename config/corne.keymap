@@ -8,10 +8,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
-
-&left_encoder { resolution = <2>; };
-&right_encoder { resolution = <2>; };
 #include <../boards/shields/corne/boards/nice_nano.overlay>
 
 / {
