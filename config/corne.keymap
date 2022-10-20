@@ -12,7 +12,7 @@
 
 &left_encoder { resolution = <2>; };
 &right_encoder { resolution = <2>; };
-// #include <../boards/shields/corne/boards/nice_nano.overlay>
+#include <../boards/shields/corne/boards/nice_nano.overlay>
 
 / {
         keymap {
