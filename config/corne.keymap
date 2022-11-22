@@ -8,7 +8,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-// #include <../boards/shields/corne/boards/nice_nano.overlay>
+#include <../boards/shields/corne/boards/nice_nano.overlay>
 
 / {
         keymap {
@@ -68,7 +68,7 @@
 //                    | GUI |     | SPC |                                | ENT |     | ALT |
                         bindings = <
    &kp  TAB    &kp EXCL      &kp AT        &kp HASH       &kp DLLR      &kp PRCNT                                                                                &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL   &rgb_ug RGB_TOG     &kp   S        &kp   D         &trans        &trans                                                                                   &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp BSLH
+   &kp LCTRL   &kp   A      &kp   S        &kp   D         &trans        &trans                                                                                   &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp BSLH
    &kp LSHFT   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4                                                                             &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
                     	                   &kp LGUI       &trans        &kp SPACE                                                                                &kp RET   &trans    &kp RALT
                         >;
