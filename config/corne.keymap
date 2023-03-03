@@ -11,6 +11,104 @@
 // #include <../boards/shields/corne/boards/nice_nano.overlay> //led interno
 
 / {
+
+
+   behaviors {
+        gqt: global-quick-tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "GLOBAL_QUICK_TAP";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <125>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        };
+        td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp SQT>, <&kp DQT>;
+        };
+        td1: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_1";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp COMMA>, <&kp LT>;
+        };
+        td2: tap_dance_2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp DOT>, <&kp GT>;
+        };
+        td4: tap_dance_4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_4";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp MINUS>, <&kp UNDER>;
+        };
+        td5: tap_dance_5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_5";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp SEMI>, <&kp COLON>;
+        };
+        td6: tap_dance_6 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_6";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp BSLH>, <&kp PIPE>;
+        };
+        td7: tap_dance_7 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_7";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp GRAVE>, <&kp TILDE>;
+        };
+        td8: tap_dance_8 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_8";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp EQUAL>, <&kp PLUS>;
+        };
+        td9: tap_dance_9 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_9";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp SLASH>, <&kp QMARK>;
+        };
+        td10: tap_dance_10 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_10";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LPAR>, <&kp RPAR>;
+        };
+        td11: tap_dance_11 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_11";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LEFT_BRACKET>, <&kp RIGHT_BRACKET>;
+        };
+        td12: tap_dance_12 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_12";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LEFT_BRACE>, <&kp RIGHT_BRACE>;
+        };
+    };
         keymap {
                 compatible = "zmk,keymap";
 
