@@ -108,6 +108,14 @@
             tapping-term-ms = <185>;
             bindings = <&kp LEFT_BRACE>, <&kp RIGHT_BRACE>;
         };
+
+        td13: tap_dance_12 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_13";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LSHFT>, <&kp CLCK>;
+        };
     };
         keymap {
                 compatible = "zmk,keymap";
@@ -123,7 +131,7 @@
                         bindings = <
    &kp ESC         &td0         &td1      &td2    &kp P   &kp Y           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
    &kp TAB         &kp   A      &kp  O    &kp E   &kp U   &kp I                &kp D &kp H  &kp T     &kp N   &kp S      &kp KP_SLASH  
-   &mt LSHFT LCAPS &kp SEMI     &kp  Q    &kp J   &kp K   &kp X                &kp B &kp M  &kp W     &kp V   &kp Z      &kp RET
+   &td13 &kp CAPS     &kp  Q    &kp J   &kp K   &kp X                &kp B &kp M  &kp W     &kp V   &kp Z      &kp RET
                                           &kp LGUI  &mo 1   &kp LCTRL                      &kp SPACE &mo 2 &kp RALT
                         >;
                 };
