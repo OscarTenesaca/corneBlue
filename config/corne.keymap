@@ -111,7 +111,7 @@
         };
 
 //OT
-        td13: tap_dance_12 {
+        td13: tap_dance_13 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_13";
             #binding-cells = <0>;
