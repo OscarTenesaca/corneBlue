@@ -25,3 +25,6 @@ CONFIG_ZMK_IDLE_SLEEP=y: Habilita el modo de sueño por inactividad.
 CONFIG_ZMK_SLEEP=y: Habilita el modo de sueño.
 CONFIG_ZMK_POWER=y: Habilita las configuraciones de energía en ZMK.
 
+https://github.com/nperez0111/zmk-config/blob/main/config/nibble.conf
+https://github.com/deintech/corne-zmk-config/blob/master/config/corne.conf
+https://deploy-preview-722--zmk.netlify.app/docs/config/power/
