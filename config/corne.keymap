@@ -1,33 +1,32 @@
-/ {
-    keymap {
-        compatible = "zmk,keymap";
+#include <zmk/keymap.h>
 
-        default_layer {
-            bindings = <&kp QUOT &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L
-                        &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S
-                        &kp SCLN &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &kp Z
-                        &kp ESC &kp TAB &kp LSHFT &kp LCTRL &kp LALT &kp SPC &kp BSPC &kp ENT &kp LGUI &kp RGUI>;
-        };
-
-        layer_fn {
-            bindings = <&mo L_FN1 &mo L_FN2 &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO>;
-        };
-
-        layer_fn1 {
-            bindings = <&kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO>;
-        };
-
-        layer_fn2 {
-            bindings = <&kp 1 &kp 2 &kp 3 &kp 4 &kp 5 &kp 6 &kp 7 &kp 8 &kp 9 &kp 0
-                        &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH &kp NO &kp NO &kp NO &kp NO &kp NO
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
-                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO>;
-        };
-    };
+const uint32_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [0] = LAYOUT(
+        KC_TAB,      KC_QUOT,    KC_COMM,    KC_DOT,    KC_P,    KC_Y,    KC_F,    KC_G,
+        KC_CAPS,     KC_A,       KC_O,       KC_E,      KC_U,    KC_I,    KC_D,    KC_H,
+        KC_LSFT,     KC_SCOLON,  KC_Q,       KC_J,      KC_K,    KC_X,    KC_B,    KC_M,
+        KC_LCTRL,    KC_LGUI,    KC_LALT,    KC_LALT,   KC_SPC,  KC_ENT,  KC_SPC,  KC_SPC
+    )
 };
+
+const uint16_t PROGMEM fn_actions[] = {};
+
+#ifdef OLED_DRIVER_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return OLED_ROTATION_180;
+}
+#endif
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_SPC:
+            if (record->event.pressed) {
+                // Insert code to handle space key
+            } else {
+                // Insert code to handle space key released
+            }
+            break;
+        // Handle other keycodes here
+    }
+    return true;
+}
