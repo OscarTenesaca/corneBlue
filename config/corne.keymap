@@ -3,39 +3,31 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            bindings = <
-                &kp QUOT &kp COMMA &kp DOT &kp P &kp Y       &kp F &kp G &kp C &kp R &kp L
-                &kp A &kp O &kp E &kp U &kp I                 &kp D &kp H &kp T &kp N &kp S
-                &kp SCLN &kp Q &kp J &kp K &kp X              &kp B &kp M &kp W &kp V &kp Z
-                &kp ESC &kp TAB &kp LSHFT &kp LCTRL &kp LALT  &kp SPC &kp BSPC &kp ENT &kp LGUI &kp RGUI
-            >;
+            bindings = <&kp QUOT &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L
+                        &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S
+                        &kp SCLN &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &kp Z
+                        &kp ESC &kp TAB &kp LSHFT &kp LCTRL &kp LALT &kp SPC &kp BSPC &kp ENT &kp LGUI &kp RGUI>;
         };
 
         layer_fn {
-            bindings = <
-                &mo L_FN1 &mo L_FN2 &kp NO &kp NO &kp NO      &kp NO &kp NO &kp NO &kp NO &kp NO
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-            >;
+            bindings = <&mo L_FN1 &mo L_FN2 &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO>;
         };
 
         layer_fn1 {
-            bindings = <
-                &kp F1 &kp F2 &kp F3 &kp F4 &kp F5            &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-            >;
+            bindings = <&kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO>;
         };
 
         layer_fn2 {
-            bindings = <
-                &kp 1 &kp 2 &kp 3 &kp 4 &kp 5                 &kp 6 &kp 7 &kp 8 &kp 9 &kp 0
-                &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH &kp NO &kp NO &kp NO &kp NO &kp NO
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-                &kp NO &kp NO &kp NO &kp NO &kp NO            &kp NO &kp NO &kp NO &kp NO &kp NO
-            >;
+            bindings = <&kp 1 &kp 2 &kp 3 &kp 4 &kp 5 &kp 6 &kp 7 &kp 8 &kp 9 &kp 0
+                        &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH &kp NO &kp NO &kp NO &kp NO &kp NO
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO
+                        &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO &kp NO>;
         };
     };
 };
