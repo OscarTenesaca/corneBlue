@@ -148,14 +148,19 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // default_layer {
-        //     bindings = <
-        //         &td_led &td0 &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L &kp BSPC
-        //         &kp TAB &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S &kp KP_SLASH
-        //         &mt LSHFT LCAPS &kp SEMI &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &kp Z &kp RET
-        //                             &kp LGUI &mo 1 &kp LCTRL &kp SPACE &mo 2 &kp RALT
-        //     >;
-        // };
+        /* ADD OT
+        * Default Layer: Alphanumeric and Symbols
+        *
+        * ,-----------------------------------------------------.							   ,-----------------------------------------------------.
+        * |  RAIS  |   ' "  |   , <  |   . >  |   P    |   Y    |							   |   F    |   G    |   C    |   R    |   L    |  BKSP   |
+        * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+        * |  LShift|   A    |   O    |   E    |   U    |   I    |							   |   D    |   H    |   T    |   N    |   S    |   /     |
+        * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+        * |  SP_MY |   ;    |   Q    |   J    |   K    |   X    |							   |   B    |   M    |   W    |   V    |   Z    |  Enter  |
+        * '--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------'
+        *                            |   GUI  |  LWR   |  SPC   |                              |   ENT  |   RSE  |   ALT  | 
+        *                            '--------+--------+--------'							   '--------+--------+--------'
+        */
 
         default_layer {
             bindings = <
@@ -166,6 +171,19 @@
             >;
         };
 
+        /* ADD OT
+        * Lower Layer: Function keys and Navigation
+        *
+        * ,-----------------------------------------------------.							   ,-----------------------------------------------------.
+        * |  TAB   |   1    |   2    |   3    |   4    |   5    |							   |   6    |   7    |   8    |   9    |   0    |  BKSP   |
+        * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+        * |  F1    |   F2   |   F3   |   F4   |   F5   |   F6   |							   |        |   UP   |        |        |        |   \     |
+        * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+        * |   F7   |   F8   |   F9   |   F10  |   F11  |   F12  |							   |  LEFT  |  DOWN  |  RIGHT |   .    |        |         |
+        * '----------------------------------------------+------|							   |-----------------------------------------------------'
+        *                             |   GUI  |  LWR   |  SPC  |							   |   ENT  |   RSE  |   ALT  | 
+        *                            '--------+--------+--------'							   '--------+--------+--------'
+        */
 
         lower_layer {
             bindings = <
@@ -176,12 +194,46 @@
             >;
         };
 
+        /* ADD OT
+        * Raise Layer: Function keys, Special Characters, and Media Controls
+        *
+        * ,-----------------------------------------------------.							   ,-------------------------------------------------------.
+        * |   TAB   |   !    |   @    |   #    |   $    |   %    |							   |   ^    |   &    |   *    |   (    |   )    |  BSPC   |
+        * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+        * |  LCTRL  |   `    |        |        |        |        |							   |   -    |   =    |   [    |   ]    |   \    |   `     |
+        * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+        * |  LSHFT  |  BT0   |  BT1   |  BT2   |        |        |							   |   _    |   +    |   {    |   }    |   |    |   ~     |
+        * '------------------------------------------------------'							   '-------------------------------------------------------'
+        *                           |   LGUI   |  SPC   |  RET   |                             |   RALT   |   FUN   |   RSE   |
+        *                           '----------+--------+--------'                             '----------+--------+--------'
+        */
         raise_layer {
             bindings = <
-                &kp TAB &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-                &kp LCTRL &kp GRAVE &trans &trans &trans &trans &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH &kp BSLH
-                &kp LSHFT &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &kp UNDER &kp PLUS &kp LBRC &kp RBRC &kp PIPE &kp TILDE
-                                                &kp LGUI &trans &kp SPACE &kp RET &trans &kp RALT
+                &kp  TAB    &kp EXCL      &kp AT        &kp HASH       &kp DLLR      &kp PRCNT           &kp CARET  &kp AMPS    &kp KP_MULTIPLY     &kp LPAR    &kp RPAR    &kp BSPC
+                &kp LCTRL   &kp GRAVE     &trans         &trans         &trans       &trans              &kp MINUS  &kp EQUAL   &kp LBKT            &kp RBKT    &kp BSLH    &kp BSLH
+                &kp LSHFT   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &trans       &trans              &kp UNDER  &kp PLUS    &kp LBRC            &kp RBRC    &kp PIPE    &kp TILDE
+                                                         &kp LGUI       &trans        &kp SPACE      &kp RET   &trans    &kp RALT
+            >;
+        };
+
+ /* ADD OT
+ * Adjust Layer: Function keys, RGB Control, and Media Controls
+ *
+ * ,-----------------------------------------------------.							   ,-----------------------------------------------------.
+ * |   ESC   |   '    |   ,    |   .    |  VOL+  |   Y    |							   |   F    |   G    |   C    |   R    |   L    |  BSPC   |
+ * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+ * |   TAB   |   A    |   A    | PREV   |  PLAY  |  NEXT  |							   |   D    |   H    |   T    |   N    |   S    |   /     |
+ * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
+ * |   SHFT  |  RGB   |   S    | REWIND |  VOL-  |  FFWD  |							   |   B    |   M    |   W    |   V    |   Z    |  RET    |
+ * '-----------------------------------------------------'							   '-----------------------------------------------------'
+ *                              |   LGUI   |  SPC   |  RET   |                              |   RALT   |   FUN   |   RSE   |
+ *                              '----------+--------+--------'                              '----------+--------+--------'
+ */
+         adjust_layer {
+                bindings = <
+                &kp ESC         &kp SQT      &kp COMMA   &kp DOT        &kp C_VOLUME_UP    &kp Y                         &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
+                &kp TAB         &kp   A      &kp  A      &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                    &kp D &kp H  &kp T     &kp N   &kp S      &kp KP_SLASH  
+                &mt LSHFT LCAPS &rgb_ug RGB_TOG  &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD            &kp B &kp M  &kp W     &kp V   &kp Z      &kp RET                   	                   &kp LGUI       &trans        &kp SPACE                                                                                &kp RET   &trans    &kp RALT
             >;
         };
 
