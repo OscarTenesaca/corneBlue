@@ -7,11 +7,13 @@
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
+
  */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+
 // #include <../boards/shields/corne/boards/nice_nano.overlay> //led interno
 
 / {
@@ -232,11 +234,11 @@
  *                              '----------+--------+--------'                              '----------+--------+--------'
  */
          adjust_layer {
-               bindings = <
-                &kp  TAB    &kp EXCL      &kp AT        &kp HASH       &kp DLLR      &kp PRCNT           &kp CARET  &kp AMPS    &kp KP_MULTIPLY     &kp LPAR    &kp RPAR    &kp BSPC
-                &kp LCTRL   &kp GRAVE     &trans         &trans         &trans       &trans              &kp MINUS  &kp EQUAL   &kp LBKT            &kp RBKT    &kp BSLH    &kp BSLH
-                &kp LSHFT   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &trans       &trans              &kp UNDER  &kp PLUS    &kp LBRC            &kp RBRC    &kp PIPE    &kp TILDE
-                                                         &kp LGUI       &trans        &kp SPACE      &kp RET   &trans    &kp RALT
+                bindings = <
+                &kp ESC         &kp SQT      &kp COMMA   &kp DOT        &kp  A    &kp Y                         &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
+                &kp TAB         &kp   A      &kp  A      &kp  A     &kp  A   &kp  A                   &kp D &kp H  &kp T     &kp N   &kp S      &kp KP_SLASH  
+                &mt LSHFT LCAPS &rgb_ug RGB_TOG  &kp S   &kp  A   &kp  A  &kp  A           &kp B &kp M  &kp W     &kp V   &kp Z      &kp RET                   	                   
+                                                         &kp LGUI       &trans        &kp SPACE                         &kp RET   &trans    &kp RALT
             >;
             //     bindings = <
             //     &kp ESC         &kp SQT      &kp COMMA   &kp DOT        &kp C_VOLUME_UP    &kp Y                         &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
