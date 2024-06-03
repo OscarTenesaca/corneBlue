@@ -164,7 +164,7 @@
 
         // Define custom behavior for Move to app left
         ctrl_left: ctrl_left {
-            compatible = "zmk,behavior-custom";
+            compatible = "zmk,behavior-macro";
             label = "CTRL_LEFT";
             #binding-cells = <0>;
             bindings = <&kp LCTRL &kp LEFT>;
@@ -172,7 +172,7 @@
 
         // Define custom behavior for Move to app right
         ctrl_right: ctrl_right {
-            compatible = "zmk,behavior-custom";
+            compatible = "zmk,behavior-macro";
             label = "CTRL_RIGHT";
             #binding-cells = <0>;
             bindings = <&kp LCTRL &kp RIGHT>;
