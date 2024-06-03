@@ -146,44 +146,36 @@
             bindings = <&kp LSHFT>, <&kp CLCK>;
         };
         //* Conbinacion de teclas
-         // Define custom behavior for Ctrl + Cmd + Q eria bloquear pantalla
-        behaviors {
-            ctrl_cmd_q: ctrl_cmd_q {
-                compatible = "zmk,behavior-custom";
-                label = "CTRL_CMD_Q";
-                #binding-cells = <0>;
-                bindings = <&kp LCTRL &kp LGUI &kp Q>;
-            };
+        // Define custom behavior for Ctrl + Cmd + Q eria bloquear pantalla
+        ctrl_cmd_q: ctrl_cmd_q {
+            compatible = "zmk,behavior-custom";
+            label = "CTRL_CMD_Q";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL &kp LGUI &kp Q>;
         };
 
-        // Captura de pantalla
-        behaviors {
-            ctrl_cmd_p: ctrl_cmd_p {
-                compatible = "zmk,behavior-custom";
-                label = "CMD_LSHFT_4";
-                #binding-cells = <0>;
-                bindings = <&kp LGUI &kp LSHFT &kp N4>;
-            };
+         // Captura de pantalla
+        ctrl_shift_4: ctrl_cmd_p {
+            compatible = "zmk,behavior-custom";
+            label = "CMD_LSHFT_4";
+            #binding-cells = <0>;
+            bindings = <&kp LGUI &kp LSHFT &kp N4>;
         };
 
         // Define custom behavior for Move to app left
-        behaviors {
-            ctrl_left: ctrl_left {
-                compatible = "zmk,behavior-custom";
-                label = "CTRL_LEFT";
-                #binding-cells = <0>;
-                bindings = <&kp LCTRL &kp LEFT>;
-            };
+        ctrl_left: ctrl_left {
+            compatible = "zmk,behavior-custom";
+            label = "CTRL_LEFT";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL &kp LEFT>;
         };
 
         // Define custom behavior for Move to app right
-        behaviors {
-            ctrl_right: ctrl_right {
-                compatible = "zmk,behavior-custom";
-                label = "CTRL_RIGHT";
-                #binding-cells = <0>;
-                bindings = <&kp LCTRL &kp RIGHT>;
-            };
+        ctrl_right: ctrl_right {
+            compatible = "zmk,behavior-custom";
+            label = "CTRL_RIGHT";
+            #binding-cells = <0>;
+            bindings = <&kp LCTRL &kp RIGHT>;
         };
 
     };
@@ -275,11 +267,13 @@
  */
          adjust_layer {
                 bindings = <
-                &kp ESC         &kp SQT      &kp COMMA   &kp DOT        &kp C_VOLUME_UP    &kp Y                         &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
-                &kp TAB         &kp   A      &kp  A      &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                    &kp D &kp H  &kp T     &kp N   &kp S      &kp KP_SLASH  
-                &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD            &kp B &kp M  &kp W     &kp V   &kp Z      &kp RET                   	                   
+                &ctrl_cmd_q     &kp SQT      &kp COMMA   &ctrl_shift_4  &kp C_VOLUME_UP    &kp Y                         &kp F &kp G  &kp C     &kp R        &kp L      &kp BSPC
+                &kp TAB         &kp   A      &ctrl_left  &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                    &kp D &kp H  &kp T     &ctrl_right  &kp S      &kp KP_SLASH  
+                &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &kp B &kp M  &kp W     &kp V        &kp Z      &kp RET                   	                   
                                                          &kp LGUI       &trans        &kp SPACE                         &kp RET   &trans    &kp RALT
             >;
         };
     };
 };
+
+// conbinations of keys
