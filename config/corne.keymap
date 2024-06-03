@@ -148,33 +148,40 @@
         //* Conbinacion de teclas
         // Define custom behavior for Ctrl + Cmd + Q eria bloquear pantalla
         ctrl_cmd_q: ctrl_cmd_q {
-            compatible = "zmk,behavior-macro";
+            compatible = "zmk,behavior-hold-tap";
             label = "CTRL_CMD_Q";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
             bindings = <&kp LCTRL &kp LGUI &kp Q>;
         };
 
          // Captura de pantalla
-        cmd_shift_4: cmd_shift_4 {
-            compatible = "zmk,behavior-macro";
-            label = "CMD_LSHFT_4";
-            #binding-cells = <0>;
+         cmd_shift_4: cmd_shift_4 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CMD_SHIFT_4";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
             bindings = <&kp LGUI &kp LSHFT &kp N4>;
         };
 
         // Define custom behavior for Move to app left
         ctrl_left: ctrl_left {
-            compatible = "zmk,behavior-macro";
+            compatible = "zmk,behavior-hold-tap";
             label = "CTRL_LEFT";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
             bindings = <&kp LCTRL &kp LEFT>;
         };
-
         // Define custom behavior for Move to app right
-        ctrl_right: ctrl_right {
-            compatible = "zmk,behavior-macro";
+       ctrl_right: ctrl_right {
+            compatible = "zmk,behavior-hold-tap";
             label = "CTRL_RIGHT";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
             bindings = <&kp LCTRL &kp RIGHT>;
         };
 
