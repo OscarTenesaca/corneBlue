@@ -179,14 +179,6 @@
             bindings = <&kp LCTRL>, <&kp RIGHT>;
         };
 
-        // Configuración de todos los leds
-         toggle_leds: led_toggle {
-        compatible = "zmk,behavior-action";
-        label = "TOGGLE_LEDS";
-        #binding-cells = <0>;
-        actions = <&rgbu_toggle>;
-    };
-
     };
 
 
@@ -282,5 +274,12 @@
                                                          &kp LGUI       &trans        &kp SPACE                          &kp RET   &trans    &kp RALT
             >;
         };
+    };
+       // Agrega una nueva acción para encender y apagar los LED al presionar la tecla 'A' en la capa de ajuste
+    key_action {
+        compatible = "zmk,key-action";
+        label = "LED_TOGGLE_ADJUST";
+        bindings = <&kp A>; // La tecla A activará esta acción
+        actions = <&behaviors.rgbu_toggle>; // Esto activará la acción de encender y apagar los LED
     };
 };
