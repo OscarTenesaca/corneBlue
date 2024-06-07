@@ -145,6 +145,40 @@
             tapping-term-ms = <185>;
             bindings = <&kp LSHFT>, <&kp CLCK>;
         };
+
+        // ? Comportamientos de combinación de teclas personalizados
+      td_ctrl_cmd_q: tap_dance_ctrl_cmd_q {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CTRL_CMD_Q";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LCTRL>, <&kp LGUI>, <&kp Q>;
+        };
+
+        td_cmd_shift_4: tap_dance_cmd_shift_4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CMD_SHIFT_4";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LGUI>, <&kp LSHFT>, <&kp N4>;
+        };
+
+        td_ctrl_left: tap_dance_ctrl_left {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CTRL_LEFT";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LCTRL>, <&kp LEFT>;
+        };
+
+        td_ctrl_right: tap_dance_ctrl_right {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CTRL_RIGHT";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp LCTRL>, <&kp RIGHT>;
+        };
+
     };
 
 
@@ -169,7 +203,7 @@
             bindings = <
                 &kp ESC       &td0         &td1       &td2     &kp P   &kp Y           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
                 &kp TAB       &kp A        &kp O      &kp E    &kp U   &kp I           &kp D &kp H  &kp T     &kp N   &kp S     &kp KP_SLASH  
-                &td13         &kp SEMI     &kp Q      &kp J    &kp K   &kp X           &kp B &kp M  &kp W     &kp V   &kp Z     &kp RET
+                &td13         &td5         &kp Q      &kp J    &kp K   &kp X           &kp B &kp M  &kp W     &kp V   &kp Z     &kp RET
                                                 &kp LGUI    &mo 1   &kp LCTRL          &kp SPACE      &mo 2   &kp RALT
             >;
         };
@@ -213,7 +247,7 @@
         raise_layer {
             bindings = <
                 &kp  TAB    &kp EXCL      &kp AT        &kp HASH       &kp DLLR      &kp PRCNT           &kp CARET  &kp AMPS    &kp KP_MULTIPLY     &kp LPAR    &kp RPAR    &kp BSPC
-                &kp LCTRL   &kp GRAVE     &trans         &trans         &trans       &trans              &kp MINUS  &kp EQUAL   &kp LBKT            &kp RBKT    &kp BSLH    &kp BSLH
+                &kp LCTRL   &kp GRAVE     &trans         &trans         &trans       &trans              &td4       &kp EQUAL   &kp LBKT            &kp RBKT    &kp BSLH    &td9
                 &kp LSHFT   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &trans       &trans              &kp UNDER  &kp PLUS    &kp LBRC            &kp RBRC    &kp PIPE    &kp TILDE
                                                          &kp LGUI       &trans        &kp SPACE      &kp RET   &trans    &kp RALT
             >;
@@ -234,11 +268,13 @@
  */
          adjust_layer {
                 bindings = <
-                &kp ESC         &kp SQT      &kp COMMA   &kp DOT        &kp C_VOLUME_UP    &kp Y                         &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
-                &kp TAB         &kp   A      &kp  A      &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                    &kp D &kp H  &kp T     &kp N   &kp S      &kp KP_SLASH  
-                &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD            &kp B &kp M  &kp W     &kp V   &kp Z      &kp RET                   	                   
+                &td_ctrl_cmd_q     &kp SQT      &kp COMMA   &td_cmd_shift_4   &kp C_VOLUME_UP    &kp Y                         &kp F &kp G  &kp C     &kp R        &kp L      &kp BSPC
+                &kp TAB         &kp   A      &td_ctrl_left  &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                    &kp D &kp H  &kp T     &td_ctrl_right  &kp S      &kp KP_SLASH  
+                &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &kp B &kp M  &kp W     &kp V        &kp Z      &kp RET                   	                   
                                                          &kp LGUI       &trans        &kp SPACE                         &kp RET   &trans    &kp RALT
             >;
         };
     };
 };
+
+// conbinations of keys
