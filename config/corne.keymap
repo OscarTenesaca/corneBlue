@@ -278,8 +278,8 @@
        // Agrega una nueva acción para encender y apagar los LED al presionar la tecla 'A' en la capa de ajuste
     key_action {
         compatible = "zmk,key-action";
-        label = "LED_TOGGLE_ADJUST";
-        bindings = <&kp A>; // La tecla A activará esta acción
-        actions = <&behaviors.rgbu_toggle>; // Esto activará la acción de encender y apagar los LED
+        label = "LED_TOGGLE_Y";
+        bindings = <&kp Y>;
+        actions = <&behaviors.rgbu_toggle>;
     };
 };
