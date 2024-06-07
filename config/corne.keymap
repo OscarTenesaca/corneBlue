@@ -179,6 +179,15 @@
             bindings = <&kp LCTRL>, <&kp RIGHT>;
         };
 
+        // Configuración de todos los leds
+         // Función para encender todos los LEDs
+        all_leds_on: led_on {
+            compatible = "zmk,behavior-action";
+            label = "ALL_LEDS_ON";
+            #binding-cells = <0>;
+            actions = <&rgbu_all_on>;
+        };
+
     };
 
 
