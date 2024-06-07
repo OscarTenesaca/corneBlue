@@ -185,7 +185,7 @@
             label = "LED_TOGGLE";
             #binding-cells = <0>;
             tapping-term-ms = <250>; // Tiempo máximo entre pulsaciones para considerarlas parte de la misma secuencia
-            bindings = <&kp TOGGLE_LEDS>, <&kp TOGGLE_LEDS>, <&kp TOGGLE_LEDS>;
+            bindings = <&toggle_leds_action>, <&toggle_leds_action>, <&toggle_leds_action>;
         };
 
 
