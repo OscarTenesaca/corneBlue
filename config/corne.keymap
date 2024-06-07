@@ -180,13 +180,12 @@
         };
 
         // Configuración de todos los leds
-         // Función para encender todos los LEDs
-        all_leds_on: led_on {
-            compatible = "zmk,behavior-action";
-            label = "ALL_LEDS_ON";
-            #binding-cells = <0>;
-            actions = <&rgbu_all_on>;
-        };
+         toggle_leds: led_toggle {
+        compatible = "zmk,behavior-action";
+        label = "TOGGLE_LEDS";
+        #binding-cells = <0>;
+        actions = <&rgbu_toggle>;
+    };
 
     };
 
@@ -279,7 +278,7 @@
                 bindings = <
                 &td_ctrl_cmd_q  &kp SQT   &kp COMMA   &td_cmd_shift_4      &kp C_VOLUME_UP    &kp Y                      &kp F &kp G  &kp C     &kp R        &kp L      &kp BSPC
                 &kp TAB         &kp   A      &td_ctrl_left  &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                 &kp D &kp H  &kp T     &td_ctrl_right  &kp S      &kp KP_SLASH  
-                &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &kp B &kp M  &kp W     &kp V        &kp Z      &kp RET                   	                   
+                &mt LSHFT LCAPS &toggle_led      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &kp B &kp M  &kp W     &kp V        &kp Z      &kp RET                   	                   
                                                          &kp LGUI       &trans        &kp SPACE                          &kp RET   &trans    &kp RALT
             >;
         };
