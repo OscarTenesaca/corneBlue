@@ -147,36 +147,35 @@
         };
 
         // ? Comportamientos de combinación de teclas personalizados
-        ctrl_cmd_q: ctrl_cmd_q {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CTRL_CMD_Q";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+      td_ctrl_cmd_q: tap_dance_ctrl_cmd_q {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CTRL_CMD_Q";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
             bindings = <&kp LCTRL>, <&kp LGUI>, <&kp Q>;
         };
-        cmd_shift_4: cmd_shift_4 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CMD_SHIFT_4";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+
+        td_cmd_shift_4: tap_dance_cmd_shift_4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CMD_SHIFT_4";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
             bindings = <&kp LGUI>, <&kp LSHFT>, <&kp N4>;
         };
-        ctrl_left: ctrl_left {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CTRL_LEFT";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+
+        td_ctrl_left: tap_dance_ctrl_left {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CTRL_LEFT";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
             bindings = <&kp LCTRL>, <&kp LEFT>;
         };
-        ctrl_right: ctrl_right {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CTRL_RIGHT";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+
+        td_ctrl_right: tap_dance_ctrl_right {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CTRL_RIGHT";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
             bindings = <&kp LCTRL>, <&kp RIGHT>;
         };
 
