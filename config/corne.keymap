@@ -237,7 +237,7 @@
         * ,-----------------------------------------------------.							   ,-------------------------------------------------------.
         * |   TAB   |   !    |   @    |   #    |   $    |   %    |							   |   ^    |   &    |   *    |   (    |   )    |  BSPC   |
         * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
-        * |  LCTRL  |   `    |        |        |        |        |							   |   -    |   =    |   [    |   ]    |   \    |   `     |
+        * |  LCTRL  |   `    |   ~    |        |        |        |							   |   -    |   =    |   [    |   ]    |   \    |   `     |
         * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
         * |  LSHFT  |  BT0   |  BT1   |  BT2   |        |        |							   |   _    |   +    |   {    |   }    |   |    |   ~     |
         * '------------------------------------------------------'							   '-------------------------------------------------------'
@@ -247,7 +247,7 @@
         raise_layer {
             bindings = <
                 &kp  TAB    &kp EXCL      &kp AT        &kp HASH       &kp DLLR      &kp PRCNT           &kp CARET  &kp AMPS    &kp KP_MULTIPLY     &kp LPAR    &kp RPAR    &kp BSPC
-                &kp LCTRL   &kp GRAVE     &trans         &trans         &trans       &trans              &td4       &kp EQUAL   &kp LBKT            &kp RBKT    &kp BSLH    &td9
+                &kp LCTRL   &kp GRAVE     &kp TILDE     &trans         &trans       &trans              &td4       &kp EQUAL   &kp LBKT            &kp RBKT    &kp BSLH    &td9
                 &kp LSHFT   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &trans       &trans              &kp UNDER  &kp PLUS    &kp LBRC            &kp RBRC    &kp PIPE    &kp TILDE
                                                          &kp LGUI       &trans        &kp SPACE      &kp RET   &trans    &kp RALT
             >;
