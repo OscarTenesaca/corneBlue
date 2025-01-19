@@ -179,14 +179,6 @@
             tapping-term-ms = <185>;
             bindings = <&kp LCTRL>, <&kp RIGHT>;
         };
-
-        // Activar o desactivar el brillo inferior
-        bt: behavior-tap {
-            compatible = "zmk,behavior-tap";
-            label = "BEHAVIOR_TAP";
-            #binding-cells = <1>;
-            bindings = <&kp>;
-        };
         
         
 
@@ -279,7 +271,7 @@
  */
          adjust_layer {
                 bindings = <
-                &td_ctrl_cmd_q  &kp SQT   &kp COMMA   &td_cmd_shift_4      &kp C_VOLUME_UP    &kp Y                      &bt &kp G  &kp C     &kp R        &kp L      &kp BSPC
+                &td_ctrl_cmd_q  &kp SQT   &kp COMMA   &td_cmd_shift_4      &kp C_VOLUME_UP    &kp Y                      &kp F &kp G  &kp C     &kp R        &kp L      &kp BSPC
                 &kp TAB         &kp   A      &td_ctrl_left  &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                 &kp D &kp H  &kp T     &td_ctrl_right  &kp S      &kp KP_SLASH  
                 &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &kp B &kp M  &kp W     &kp V        &kp Z      &kp RET                   	                   
                                                          &kp LGUI       &trans        &kp SPACE                          &kp RET   &trans    &kp RALT
