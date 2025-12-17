@@ -267,12 +267,34 @@
  *                              |   LGUI   |  SPC   |  RET   |                              |   RALT   |   FUN   |   RSE   |
  *                              '----------+--------+--------'                              '----------+--------+--------'
  */
-         adjust_layer {
+        adjust_layer {
                 bindings = <
                 &td_ctrl_cmd_q  &kp SQT   &kp COMMA   &td_cmd_shift_4      &kp C_VOLUME_UP    &kp Y                      &kp F &kp G  &kp C     &kp R        &kp L      &kp BSPC
                 &kp TAB         &kp   A      &td_ctrl_left  &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                 &kp D &kp H  &kp T     &td_ctrl_right  &kp S      &kp KP_SLASH  
                 &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &kp B &kp M  &kp W     &kp V        &kp Z      &kp RET                   	                   
-                                                         &kp LGUI       &trans        &kp SPACE                          &kp RET   &trans    &kp RALT
+                                                        &kp LGUI       &trans        &kp SPACE                          &kp RET   &trans    &kp RALT
+            >;
+        };
+ /* ADD OT
+
+ * Control Layer: Function keys, RGB Control, and Media Controls
+ *
+ * ,-----------------------------------------------------.							   ,-------------------------------------------------------.
+ * |   ESC   |   '    |   ,    |   .    |  VOL+  |   Y    |							   |   7    |   8    |   9    |   +     |         |   UP   |
+ * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+---------+--------+--------+
+ * |   TAB   |   A    |   A    | PREV   |  PLAY  |  NEXT  |							   |   4    |   5    |   6    |   -     |    LEFT | RIGHT  |
+ * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+---------+--------+--------+
+ * |   SHFT  |  RGB   |   S    | REWIND |  VOL-  |  FFWD  |							   |   1    |   2    |   3    |   =     |    B    |  DOWN  |
+ * '-----------------------------------------------------'							   '-------------------------------------------------------.
+ *                          |   LGUI   |  SPC   |  RET   |                              |   RALT   |   FUN   |   RSE   |
+ *                          '----------+--------+--------'                              '----------+--------+--------'
+ */
+        control_layer {
+                bindings = <
+                &trans          &trans          &trans          &trans          &trans          &trans              &kp N7          &kp N6          &kp N9          &trans          &kp UP          &trans
+                &trans          &trans          &trans          &trans          &trans          &trans              &kp N4          &kp N5          &kp N6          &kp LEFT        &kp DOWN        &kp RIGHT 
+                &trans          &trans          &trans          &trans          &trans          &trans              &kp N1          &kp N2          &kp N3          &trans          &trans          &trans           
+                                                                &trans          &trans          &trans              &kp N0          &trans          &trans
             >;
         };
     };
