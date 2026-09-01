@@ -1,0 +1,64 @@
+/*
+ * RGB (per-key + underglow) para nice_nano_v2 en el shield corne.
+ *
+ * Pin: P0.06 (SPI3 MOSI). No confirmado oficialmente por el vendedor
+ * (Typeractive no documenta RGB para este PCB); se infirio de:
+ *   - app/boards/shields/corne/boards/nice_nano.overlay en zmkfirmware/zmk
+ *     (mismo pin, mismo patron SPI, para nice_nano v1).
+ *   - La lista de "pines libres" del pinout oficial de Typeractive para
+ *     este PCB (docs.typeractive.xyz/build-guides/corne-wireless/troubleshooting),
+ *     donde P0.06 aparece como no usado por la matriz ni el nice!view.
+ * Si al flashear los LEDs no responden, este es el primer valor a revisar.
+ *
+ * chain-length: 27 LEDs por mitad (estimado a partir de la numeracion
+ * LED1-LED54 vista en la PCB fisica del usuario, 54 LEDs totales / 2
+ * mitades). Verificar contando los LEDs realmente soldados en cada mitad
+ * y ajustar si no coincide.
+ */
+
+#include <dt-bindings/led/led.h>
+
+&pinctrl {
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+        };
+    };
+
+    spi3_sleep: spi3_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+            low-power-enable;
+        };
+    };
+};
+
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-1 = <&spi3_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+
+        /* SPI */
+        reg = <0>; /* ignorado, pero necesario para el binding SPI */
+        spi-max-frequency = <4000000>;
+
+        /* WS2812 / SK6812 */
+        chain-length = <27>; /* ver nota arriba: verificar conteo real */
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
+
+/ {
+    chosen {
+        zmk,underglow = &led_strip;
+    };
+};
