@@ -12,10 +12,11 @@
  * Confirmado funcional: con este pin los LEDs encienden y responden al
  * efecto configurado.
  *
- * chain-length: 42 LEDs por mitad (21 switches x 2 LEDs cada uno, confirmado
- * por conteo fisico del usuario). El valor anterior (27) estaba mal: ZMK
- * solo enviaba datos a los primeros 27 LEDs de la cadena, dejando los
- * ultimos ~17 sin señal (por eso encendian los primeros pero no el resto).
+ * chain-length: 27 LEDs por mitad (6 underglow + 21 per-key, confirmado por
+ * conteo fisico). Con este valor correcto, solo encienden los 6 underglow
+ * mas los primeros ~4 per-key (10 de 27) - no es un problema de conteo,
+ * sino degradacion de la señal SPI a mitad de la cadena. Ver
+ * spi-max-frequency mas abajo.
  */
 
 #include <dt-bindings/led/led.h>
@@ -48,10 +49,14 @@
 
         /* SPI */
         reg = <0>; /* ignorado, pero necesario para el binding SPI */
-        spi-max-frequency = <4000000>;
+        /* Bajado de 4MHz a 2MHz: experimento para mitigar degradacion de
+         * señal SPI documentada en nRF52840 (zephyrproject-rtos/zephyr#29877)
+         * que corta la cadena a mitad de camino. Revertir a 4000000 si no
+         * cambia nada. */
+        spi-max-frequency = <2000000>;
 
         /* WS2812 / SK6812 */
-        chain-length = <42>; /* 21 switches x 2 LEDs por switch */
+        chain-length = <27>; /* 6 underglow + 21 per-key */
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
 
