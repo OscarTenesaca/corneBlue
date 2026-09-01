@@ -1,5 +1,6 @@
 /*
- * RGB (per-key + underglow) para nice_nano_v2 en el shield corne.
+ * RGB (2 LEDs por switch: uno arriba, uno abajo) para nice_nano_v2 en el
+ * shield corne.
  *
  * Pin: P0.06 (SPI3 MOSI). No confirmado oficialmente por el vendedor
  * (Typeractive no documenta RGB para este PCB); se infirio de:
@@ -8,12 +9,13 @@
  *   - La lista de "pines libres" del pinout oficial de Typeractive para
  *     este PCB (docs.typeractive.xyz/build-guides/corne-wireless/troubleshooting),
  *     donde P0.06 aparece como no usado por la matriz ni el nice!view.
- * Si al flashear los LEDs no responden, este es el primer valor a revisar.
+ * Confirmado funcional: con este pin los LEDs encienden y responden al
+ * efecto configurado.
  *
- * chain-length: 27 LEDs por mitad (estimado a partir de la numeracion
- * LED1-LED54 vista en la PCB fisica del usuario, 54 LEDs totales / 2
- * mitades). Verificar contando los LEDs realmente soldados en cada mitad
- * y ajustar si no coincide.
+ * chain-length: 42 LEDs por mitad (21 switches x 2 LEDs cada uno, confirmado
+ * por conteo fisico del usuario). El valor anterior (27) estaba mal: ZMK
+ * solo enviaba datos a los primeros 27 LEDs de la cadena, dejando los
+ * ultimos ~17 sin señal (por eso encendian los primeros pero no el resto).
  */
 
 #include <dt-bindings/led/led.h>
@@ -49,7 +51,7 @@
         spi-max-frequency = <4000000>;
 
         /* WS2812 / SK6812 */
-        chain-length = <27>; /* ver nota arriba: verificar conteo real */
+        chain-length = <42>; /* 21 switches x 2 LEDs por switch */
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
 
