@@ -20,20 +20,9 @@
     // Use tapdance to handle the double tap of the shift key
         behaviors {
 
-        gqt: global-quick-tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "GLOBAL_QUICK_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            global-quick-tap;
-            bindings = <&kp>, <&kp>;
-        };
         //? TAP DANCE ('' and "")
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp SQT>, <&kp DQT>;
@@ -42,7 +31,6 @@
         //? TAP DANCE (, and <)
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_1";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp COMMA>, <&kp LT>;
@@ -51,7 +39,6 @@
         //? TAP DANCE (. and >)
         td2: tap_dance_2 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_2";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp DOT>, <&kp GT>;
@@ -60,7 +47,6 @@
         //? TAP DANCE (- and _)
         td4: tap_dance_4 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_4";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp MINUS>, <&kp UNDER>;
@@ -69,7 +55,6 @@
         //? TAP DANCE (; and :)
         td5: tap_dance_5 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_5";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp SEMI>, <&kp COLON>;
@@ -78,7 +63,6 @@
         //? TAP DANCE (\ and |)
         td6: tap_dance_6 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_6";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp BSLH>, <&kp PIPE>;
@@ -87,7 +71,6 @@
         //? TAP DANCE (` and ~)
         td7: tap_dance_7 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_7";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp GRAVE>, <&kp TILDE>;
@@ -96,7 +79,6 @@
         //? TAP DANCE (= and +)
         td8: tap_dance_8 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_8";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp EQUAL>, <&kp PLUS>;
@@ -105,7 +87,6 @@
         //? TAP DANCE (/ and ?)
         td9: tap_dance_9 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_9";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp SLASH>, <&kp QMARK>;
@@ -114,7 +95,6 @@
         //? TAP DANCE ([ and {)
         td10: tap_dance_10 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_10";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LPAR>, <&kp RPAR>;
@@ -123,7 +103,6 @@
         //? TAP DANCE (] and })
         td11: tap_dance_11 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_11";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LEFT_BRACKET>, <&kp RIGHT_BRACKET>;
@@ -132,7 +111,6 @@
         //? TAP DANCE ({ and })
         td12: tap_dance_12 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_12";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LEFT_BRACE>, <&kp RIGHT_BRACE>;
@@ -141,7 +119,6 @@
         //? TAP DANCE (Shift and Caps Lock)
         td13: tap_dance_13 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_13";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LSHFT>, <&kp CLCK>;
@@ -150,7 +127,6 @@
         // ? Comportamientos de combinación de teclas personalizados
       td_ctrl_cmd_q: tap_dance_ctrl_cmd_q {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_CTRL_CMD_Q";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LCTRL>, <&kp LGUI>, <&kp Q>;
@@ -158,7 +134,6 @@
 
         td_cmd_shift_4: tap_dance_cmd_shift_4 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_CMD_SHIFT_4";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LGUI>, <&kp LSHFT>, <&kp N4>;
@@ -166,7 +141,6 @@
 
         td_ctrl_left: tap_dance_ctrl_left {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_CTRL_LEFT";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LCTRL>, <&kp LEFT>;
@@ -174,7 +148,6 @@
 
         td_ctrl_right: tap_dance_ctrl_right {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_CTRL_RIGHT";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
             bindings = <&kp LCTRL>, <&kp RIGHT>;
@@ -204,7 +177,7 @@
         default_layer {
             bindings = <
                 &kp ESC       &td0         &td1       &td2     &kp P   &kp Y           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
-                &kp TAB       &kp A        &kp O      &kp E    &kp U   &kp I           &kp D &kp H  &kp T     &kp N   &kp S     &kp KP_SLASH
+                &kp TAB       &kp A        &kp O      &kp E    &kp U   &kp I           &kp D &kp H  &kp T     &kp N   &kp S     &td9
                 &td13         &td5         &kp Q      &kp J    &kp K   &kp X           &kp B &kp M  &kp W     &kp V   &kp Z     &kp RET
                                                 &kp LGUI    &mo 1   &kp LCTRL          &kp SPACE      &mo 2   &kp RALT
             >;
@@ -240,7 +213,7 @@
         * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
         * |  LCTRL  |   `    |   ~    |        |        |        |							   |   -    |   =    |   [    |   ]    |   \    |   `     |
         * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
-        * |  LSHFT  |  BT0   |  BT1   |  BT2   |        |        |							   |   _    |   +    |   {    |   }    |   |    |   ~     |
+        * |  LSHFT  |        |        |        |        |        |							   |   _    |   +    |   {    |   }    |   |    |   ~     |
         * '------------------------------------------------------'							   '-------------------------------------------------------'
         *                           |   LGUI   |  SPC   |  RET   |                             |   RALT   |   FUN   |   RSE   |
         *                           '----------+--------+--------'                             '----------+--------+--------'
@@ -249,7 +222,7 @@
             bindings = <
                 &kp  TAB    &kp EXCL      &kp AT        &kp HASH       &kp DLLR      &kp PRCNT           &kp CARET  &kp AMPS    &kp KP_MULTIPLY     &kp LPAR    &kp RPAR    &kp BSPC
                 &kp LCTRL   &td7     &kp TILDE     &trans         &trans       &trans              &td4       &kp EQUAL   &kp LBKT            &kp RBKT    &kp BSLH    &td9
-                &kp LSHFT   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &trans       &trans              &kp UNDER  &kp PLUS    &kp LBRC            &kp RBRC    &kp PIPE    &kp TILDE
+                &kp LSHFT   &trans        &trans        &trans          &trans       &trans              &kp UNDER  &kp PLUS    &kp LBRC            &kp RBRC    &kp PIPE    &kp TILDE
                                                          &kp LGUI       &trans        &kp SPACE      &kp RET   &trans    &kp RALT
             >;
         };
@@ -260,9 +233,9 @@
  * ,-----------------------------------------------------.							   ,-----------------------------------------------------.
  * |   ESC   |   '    |   ,    |   .    |  VOL+  |   Y    |							   | RGB_ON | RGB_OFF| RGB_TOG| RGB_EFF| RGB_EFR|  BSPC   |
  * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
- * |   TAB   |   A    |   A    | PREV   |  PLAY  |  NEXT  |							   | HUE+   | HUE-   | BRT+   |CTRLRGT | BRT-   |   /     |
+ * |   BT0   |  BT1   |  BT2   | PREV   |  PLAY  |  NEXT  |							   | HUE+   | HUE-   | BRT+   |CTRLRGT | BRT-   |   /     |
  * |---------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
- * |   SHFT  |  RGB   |   S    | REWIND |  VOL-  |  FFWD  |							   | SAT+   | SAT-   | SPD+   | SPD-   |   Z    |  RET    |
+ * |  SHFT   | BTCLR  | BTDISC | REWIND |  VOL-  |  FFWD  |							   | SAT+   | SAT-   | SPD+   | SPD-   |   Z    |  RET    |
  * '-----------------------------------------------------'							   '-----------------------------------------------------'
  *                              |   LGUI   |  SPC   |  RET   |                              |   RALT   |   FUN   |   RSE   |
  *                              '----------+--------+--------'                              '----------+--------+--------'
@@ -271,12 +244,16 @@
  *   F=ON  G=OFF  C=Toggle  R=Efecto siguiente  L=Efecto anterior
  *   D=Hue+  H=Hue-  T=Brillo+  S=Brillo-
  *   B=Sat+  M=Sat-  W=Velocidad+  V=Velocidad-
+ *
+ * Bluetooth (mitad izquierda de adjust_layer):
+ *   BT0/BT1/BT2 = seleccionar perfil   BTCLR = borrar emparejamiento actual
+ *   BTDISC = forzar desconexion/reconexion
  */
         adjust_layer {
                 bindings = <
                 &td_ctrl_cmd_q  &kp SQT   &kp COMMA   &td_cmd_shift_4      &kp C_VOLUME_UP    &kp Y                      &rgb_ug RGB_ON &rgb_ug RGB_OFF  &rgb_ug RGB_TOG     &rgb_ug RGB_EFF        &rgb_ug RGB_EFR      &kp BSPC
-                &kp TAB         &kp   A      &td_ctrl_left  &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                 &rgb_ug RGB_HUI &rgb_ug RGB_HUD  &rgb_ug RGB_BRI     &td_ctrl_right  &rgb_ug RGB_BRD      &kp KP_SLASH
-                &mt LSHFT LCAPS &kp   A      &kp S   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &rgb_ug RGB_SAI &rgb_ug RGB_SAD  &rgb_ug RGB_SPI     &rgb_ug RGB_SPD        &kp Z      &kp RET
+                &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2   &kp C_PREV     &kp C_PLAY_PAUSE   &kp K_NEXT                 &rgb_ug RGB_HUI &rgb_ug RGB_HUD  &rgb_ug RGB_BRI     &td_ctrl_right  &rgb_ug RGB_BRD      &kp KP_SLASH
+                &mt LSHFT LCAPS &bt BT_CLR   &bt BT_DISC   &kp C_REWIND   &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD                &rgb_ug RGB_SAI &rgb_ug RGB_SAD  &rgb_ug RGB_SPI     &rgb_ug RGB_SPD        &kp Z      &kp RET
                                                         &kp LGUI       &trans        &kp SPACE                          &kp RET   &trans    &kp RALT
             >;
         };
