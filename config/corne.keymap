@@ -245,7 +245,6 @@
  *   Fila 1: F: tap=ON, doble-tap=OFF   C=Solid   R=Breathe   L=Rainbow(Spectrum)   siguiente=Swirl
  *   Fila 2 (subir): D=Brillo+  H=Sat+  T=Velocidad+  N=Hue+
  *   Fila 3 (bajar):  B=Brillo-  M=Sat-  W=Velocidad-  V=Hue-
- *
  * Bluetooth (mitad izquierda de adjust_layer):
  *   BT0/BT1/BT2 = seleccionar perfil   BTCLR = borrar emparejamiento actual
  *   BTDISC = forzar desconexion/reconexion
