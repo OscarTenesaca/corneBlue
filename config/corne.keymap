@@ -154,9 +154,99 @@
             bindings = <&rgb_ug RGB_ON>, <&rgb_ug RGB_OFF>;
         };
 
+        //? TAP DANCE (T normal / doble-tap = Expandir nivel actual VSCode)
+        td_t_expand_current: tap_dance_t_expand_current {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp T>, <&vscode_expand_current>;
+        };
+
+        //? TAP DANCE (W normal / doble-tap = Plegar nivel actual VSCode)
+        td_w_fold_current: tap_dance_w_fold_current {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp W>, <&vscode_fold_current>;
+        };
+
+        //? TAP DANCE (H normal / doble-tap = Expandir todo VSCode)
+        td_h_expand_all: tap_dance_h_expand_all {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp H>, <&vscode_expand_all>;
+        };
+
+        //? TAP DANCE (M normal / doble-tap = Plegar todo VSCode)
+        td_m_fold_all: tap_dance_m_fold_all {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp M>, <&vscode_fold_all>;
+        };
+
+        //? TAP DANCE (P normal / doble-tap = 4)
+        td_p_f4: tap_dance_p_f4 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp P>, <&kp N4>;
+        };
+
+        //? TAP DANCE (Y normal / doble-tap = 5)
+        td_y_f5: tap_dance_y_f5 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp Y>, <&kp N5>;
+        };
+
+        //? TAP DANCE (RALT normal / doble-tap = RALT / triple-tap = toggle adjust_layer)
+        td_ralt_adjust: tap_dance_ralt_adjust {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp RALT>, <&kp RALT>, <&tog 3>;
+        };
+
 
     };
 
+    macros {
+        //? Plegar/expandir en VSCode (Cmd+K seguido de una segunda tecla)
+        vscode_fold_current: vscode_fold_current {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings = <&kp LG(K)>, <&kp LG(LBKT)>;
+        };
+
+        vscode_expand_current: vscode_expand_current {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings = <&kp LG(K)>, <&kp LG(RBKT)>;
+        };
+
+        vscode_fold_all: vscode_fold_all {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings = <&kp LG(K)>, <&kp LG(N0)>;
+        };
+
+        vscode_expand_all: vscode_expand_all {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings = <&kp LG(K)>, <&kp LG(J)>;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -165,22 +255,30 @@
         * Default Layer: Alphanumeric and Symbols
         *
         * ,-----------------------------------------------------.							   ,-----------------------------------------------------.
-        * |  RAIS  |   ' "  |   , <  |   . >  |   P    |   Y    |							   |   F    |   G    |   C    |   R    |   L    |  BKSP   |
+        * |  RAIS  |   ' "  |   , <  |   . >  |P/2x4   |Y/2x5   |							   |   F    |   G    |   C    |   R    |   L    |  BKSP   |
         * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
-        * |  LShift|   A    |   O    |   E    |   U    |   I    |							   |   D    |   H    |   T    |   N    |   S    |   /     |
+        * |  LShift|   A    |   O    |   E    |   U    |   I    |							   |   D    |H/2xExpAll|T/2xExpCur| N    |   S    |   /     |
         * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
-        * |  SP_MY |   ;    |   Q    |   J    |   K    |   X    |							   |   B    |   M    |   W    |   V    |   Z    |  Enter  |
+        * |  SP_MY |   ;    |   Q    |   J    |   K    |   X    |							   |   B    |M/2xFoldAll|W/2xFoldCur| V   |   Z    |  Enter  |
         * '--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------'
-        *                            |   GUI  |  LWR   |  SPC   |                              |   ENT  |   RSE  |   ALT  |
+        *                            |   GUI  |  LWR   |  SPC   |                              |   ENT  |   RSE  |ALT/3xADJ|
         *                            '--------+--------+--------'							   '--------+--------+--------'
+        *
+        * ALT (pulgar derecho): tap/doble-tap normal = RALT, triple-tap = toggle adjust_layer
+        *
+        * H/T/M/W: tap normal, doble-tap = shortcuts de VSCode (fold/unfold):
+        *   H doble-tap = Expandir todo (Cmd+K, Cmd+J)
+        *   M doble-tap = Plegar todo (Cmd+K, Cmd+0)
+        *   T doble-tap = Expandir nivel actual (Cmd+K, Cmd+])
+        *   W doble-tap = Plegar nivel actual (Cmd+K, Cmd+[)
         */
 
         default_layer {
             bindings = <
-                &kp ESC       &td0         &td1       &td2     &kp P   &kp Y           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
-                &kp TAB       &kp A        &kp O      &kp E    &kp U   &kp I           &kp D &kp H  &kp T     &kp N   &kp S     &td9
-                &td13         &td5         &kp Q      &kp J    &kp K   &kp X           &kp B &kp M  &kp W     &kp V   &kp Z     &kp RET
-                                                &kp LGUI    &mo 1   &kp LCTRL          &kp SPACE      &mo 2   &kp RALT
+                &kp ESC       &td0         &td1       &td2     &td_p_f4   &td_y_f5           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
+                &kp TAB       &kp A        &kp O      &kp E    &kp U   &kp I           &kp D &td_h_expand_all  &td_t_expand_current     &kp N   &kp S     &td9
+                &td13         &td5         &kp Q      &kp J    &kp K   &kp X           &kp B &td_m_fold_all  &td_w_fold_current     &kp V   &kp Z     &kp RET
+                                                &kp LGUI    &mo 1   &kp LCTRL          &kp SPACE      &mo 2   &td_ralt_adjust
             >;
         };
 
@@ -254,7 +352,7 @@
                 &td_ctrl_cmd_q   &kp SQT       &kp COMMA      &td_cmd_shift_4  &kp C_VOLUME_UP    &kp Y                      &td_rgb_onoff    &rgb_ug RGB_EFS_CMD 0  &rgb_ug RGB_EFS_CMD 1  &rgb_ug RGB_EFS_CMD 2  &rgb_ug RGB_EFS_CMD 3  &trans
                 &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_SEL 2   &kp C_PREV       &kp C_PLAY_PAUSE   &kp K_NEXT                 &rgb_ug RGB_BRI  &rgb_ug RGB_SAI        &rgb_ug RGB_SPI        &rgb_ug RGB_HUI        &trans                 &trans
                 &mt LSHFT LCAPS  &bt BT_CLR    &bt BT_DISC 0  &kp C_REWIND     &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD         &rgb_ug RGB_BRD  &rgb_ug RGB_SAD        &rgb_ug RGB_SPD        &rgb_ug RGB_HUD        &trans                 &trans
-                                                               &kp LGUI         &trans             &kp SPACE                 &kp RET                &trans                 &kp RALT
+                                                               &kp LGUI         &trans             &kp SPACE                 &kp RET                &trans                 &td_ralt_adjust
             >;
         };
  /* ADD OT

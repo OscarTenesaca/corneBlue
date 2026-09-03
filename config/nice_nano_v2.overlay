@@ -20,6 +20,7 @@
  */
 
 #include <dt-bindings/led/led.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
 &pinctrl {
     spi3_default: spi3_default {
@@ -64,8 +65,27 @@
     };
 };
 
+/*
+ * LED azul integrado del nice!nano (indicador de bateria via
+ * zmk-poor-mans-led-indicator). Pin P0.15, confirmado de forma
+ * independiente por la documentacion de TinyGo para nice!nano y por el
+ * ejemplo del propio modulo. Separado por completo de la cadena RGB de
+ * arriba (led_strip en P0.06) - funciona aunque el RGB este apagado.
+ */
 / {
     chosen {
         zmk,underglow = &led_strip;
+    };
+
+    leds {
+        compatible = "gpio-leds";
+        user_led: led_0 {
+            gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+            label = "User LED";
+        };
+    };
+
+    aliases {
+        indicator-led = &user_led;
     };
 };
