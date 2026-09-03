@@ -17,3 +17,7 @@ include:
     shield: corne_left
   - board: nice_nano_v2
     shield: corne_right
+    # DEBUG TEMPORAL: snippet oficial de ZMK para logging por USB (agrega
+    # el nodo devicetree CDC-ACM que falta en nice_nano_v2). Quitar esta
+    # linea despues de diagnosticar el problema de RGB.
+    snippet: zmk-usb-logging
