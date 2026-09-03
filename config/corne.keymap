@@ -186,6 +186,30 @@
             bindings = <&kp M>, <&vscode_fold_all>;
         };
 
+        //? TAP DANCE (P normal / doble-tap = F4)
+        td_p_f4: tap_dance_p_f4 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp P>, <&kp F4>;
+        };
+
+        //? TAP DANCE (Y normal / doble-tap = F5)
+        td_y_f5: tap_dance_y_f5 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp Y>, <&kp F5>;
+        };
+
+        //? TAP DANCE (RALT normal / doble-tap = RALT / triple-tap = toggle adjust_layer)
+        td_ralt_adjust: tap_dance_ralt_adjust {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <185>;
+            bindings = <&kp RALT>, <&kp RALT>, <&tog 3>;
+        };
+
 
     };
 
@@ -231,14 +255,16 @@
         * Default Layer: Alphanumeric and Symbols
         *
         * ,-----------------------------------------------------.							   ,-----------------------------------------------------.
-        * |  RAIS  |   ' "  |   , <  |   . >  |   P    |   Y    |							   |   F    |   G    |   C    |   R    |   L    |  BKSP   |
+        * |  RAIS  |   ' "  |   , <  |   . >  |P/2xF4  |Y/2xF5  |							   |   F    |   G    |   C    |   R    |   L    |  BKSP   |
         * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
         * |  LShift|   A    |   O    |   E    |   U    |   I    |							   |   D    |H/2xExpAll|T/2xExpCur| N    |   S    |   /     |
         * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
         * |  SP_MY |   ;    |   Q    |   J    |   K    |   X    |							   |   B    |M/2xFoldAll|W/2xFoldCur| V   |   Z    |  Enter  |
         * '--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------'
-        *                            |   GUI  |  LWR   |  SPC   |                              |   ENT  |   RSE  |   ALT  |
+        *                            |   GUI  |  LWR   |  SPC   |                              |   ENT  |   RSE  |ALT/3xADJ|
         *                            '--------+--------+--------'							   '--------+--------+--------'
+        *
+        * ALT (pulgar derecho): tap/doble-tap normal = RALT, triple-tap = toggle adjust_layer
         *
         * H/T/M/W: tap normal, doble-tap = shortcuts de VSCode (fold/unfold):
         *   H doble-tap = Expandir todo (Cmd+K, Cmd+J)
@@ -249,10 +275,10 @@
 
         default_layer {
             bindings = <
-                &kp ESC       &td0         &td1       &td2     &kp P   &kp Y           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
+                &kp ESC       &td0         &td1       &td2     &td_p_f4   &td_y_f5           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
                 &kp TAB       &kp A        &kp O      &kp E    &kp U   &kp I           &kp D &td_h_expand_all  &td_t_expand_current     &kp N   &kp S     &td9
                 &td13         &td5         &kp Q      &kp J    &kp K   &kp X           &kp B &td_m_fold_all  &td_w_fold_current     &kp V   &kp Z     &kp RET
-                                                &kp LGUI    &mo 1   &kp LCTRL          &kp SPACE      &mo 2   &kp RALT
+                                                &kp LGUI    &mo 1   &kp LCTRL          &kp SPACE      &mo 2   &td_ralt_adjust
             >;
         };
 
