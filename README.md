@@ -69,9 +69,23 @@ Devicetree del LED en `config/nice_nano_v2.overlay` (nodo `leds` + alias `indica
 
 Hardware: PCB Corne v3.0.1 (Typeractive), **27 LEDs SK6812/WS2812 por mitad** (6 underglow + 21 per-key, uno por switch), en una sola cadena serie por el pin `P0.06` (SPI3 MOSI). Ver `config/nice_nano_v2.overlay` para el detalle y las fuentes usadas para inferir el pin (Typeractive no documenta RGB para este PCB oficialmente).
 
-**Estado actual: parcialmente funcional, sin resolver del todo.** Encienden los 6 underglow + los primeros ~4 per-key (10 de 27); el resto no responde. Se descartaron como causa: desajuste de chain-length, frecuencia SPI, brillo/corriente de batería, y defecto de hardware (confirmado con una prueba en QMK que sí encendió los 27). Sigue en investigación — valores actuales (`spi-max-frequency=2000000`, brillo al 15%, efecto Solid) son de diagnóstico, no definitivos.
+### Estado aceptado: 10 de 27 LEDs
 
-Kconfig relevante en `corne.conf`: `CONFIG_ZMK_RGB_UNDERGLOW=y`, `CONFIG_WS2812_STRIP=y`, arranca apagado (`RGB_UNDERGLOW_ON_START=n`), se apaga solo en idle (`AUTO_OFF_IDLE=y`).
+Encienden los 6 underglow + los primeros ~4 per-key (10 de 27); el resto no responde. Es una limitación conocida y aceptada, no un bug pendiente de arreglar. Se investigó a fondo antes de aceptarla:
+
+- **Hardware descartado**: mismo PCB/controlador probado con QMK, los 27 LEDs encendieron correctamente, uno por uno.
+- **Config descartada**: `chain-length` correcto (27, confirmado por conteo físico), frecuencia SPI probada en 2MHz/4MHz/8MHz sin ningún cambio, brillo/corriente de batería bajado al 15% sin cambio.
+- **Sin error de software**: con `CONFIG_ZMK_USB_LOGGING` (snippet oficial `zmk-usb-logging`) y log en modo debug, al activar `RGB_ON` no aparece ningún error de `spi`/`ws2812`/`led_strip` — el driver reporta la transmisión como exitosa.
+- **Los 2 bugs conocidos de Zephyr para esto en nRF52840 ya estaban evitados** desde el inicio: se usa `compatible = "nordic,nrf-spim"` (no el driver legacy sin DMA, zephyrproject-rtos/zephyr#29877) y SPI3 (la única instancia que funciona bien en nRF52840, zephyrproject-rtos/zephyr#57147).
+
+**Alternativas evaluadas y no tomadas** (por riesgo o falta de referencia verificada, no por pereza):
+- `bits-per-symbol` reducido: sin ejemplo verificado para nRF52840, riesgo real de empeorar lo que ya funciona si el cálculo de temporización sale mal.
+- Driver I2S (`worldsemi,ws2812-i2s`): existe en Zephyr, nRF52840 tiene el periférico, pero tampoco hay referencia verificada.
+- Driver GPIO bit-banging de Zephyr: no soporta nRF52840 (solo nRF51).
+- Escribir un driver GPIO bit-banging propio (como probablemente hace QMK): viable en teoría, pero es desarrollo de firmware real (días de trabajo), no una edición de config.
+- Preguntar en el Discord de ZMK: sigue siendo una opción de bajo riesgo si se retoma esto más adelante.
+
+Kconfig relevante en `corne.conf`: `CONFIG_ZMK_RGB_UNDERGLOW=y`, `CONFIG_WS2812_STRIP=y`, arranca apagado (`RGB_UNDERGLOW_ON_START=n`), se apaga solo en idle (`AUTO_OFF_IDLE=y`), brillo tope 60%, efecto por defecto Breathe.
 
 **Efectos reales disponibles (confirmado en el código fuente de ZMK v0.3.0):** solo existen 4 — Solid, Breathe, Spectrum (Rainbow), Swirl. No hay Reactive/Ripple/Fire/Comet/Scanner/Random ni nada per-key-reactivo en ZMK estándar; requeriría escribir un driver C nuevo (módulo fuera del árbol).
 
@@ -79,21 +93,26 @@ Kconfig relevante en `corne.conf`: `CONFIG_ZMK_RGB_UNDERGLOW=y`, `CONFIG_WS2812_
 
 ## Keymap — controles agregados
 
-Todo en `adjust_layer` (`config/corne.keymap`), sin modificar el resto de las capas:
+### Cómo llegar a `adjust_layer`
 
-**Lado derecho — RGB:**
+`adjust_layer` es la capa 3 (índice), donde viven los controles de RGB y Bluetooth. Dos formas de activarla:
+- Anidada: mantener `lower_layer` y, dentro de esa capa, su propia tecla de pulgar `mo 3`.
+- **Más práctica**: en `default_layer`, el pulgar derecho (antes solo `Alt`) es ahora `td_ralt_adjust` — tap/doble-tap = `Alt` normal, **triple-tap = activa/desactiva `adjust_layer`** (usa `&tog 3`, se queda encendida hasta que la vuelvas a activar con otro triple-tap; funciona igual desde dentro de `adjust_layer` para volver a `default_layer`).
+
+**Lado derecho de `adjust_layer` — RGB:**
 - `F`: tap = encender, doble-tap = apagar (`td_rgb_onoff`)
 - `C` / `R` / `L` / siguiente col = salto directo a Solid / Breathe / Rainbow / Swirl (`RGB_EFS_CMD`)
-- Fila "subir" (`D H T N`) y fila "bajar" (`B M W V`): Brillo / Saturación / Velocidad / Hue, +/− respectivamente
+- Fila "subir" (`D H T N`) = Brillo+ / Saturación+ / Velocidad+ / Hue+
+- Fila "bajar" (`B M W V`) = Brillo− / Saturación− / Velocidad− / Hue−
 
-**Lado izquierdo — Bluetooth:**
+**Lado izquierdo de `adjust_layer` — Bluetooth:**
 - `BT0` / `BT1` / `BT2`: seleccionar perfil
 - `BTCLR`: borrar el emparejamiento del perfil actual (recuperación cuando no reconecta)
 - `BTDISC`: forzar desconexión/reconexión del perfil actual
 
-### `default_layer` — atajos de plegado de código (VSCode / Antigravity)
+### `default_layer` — atajos adicionales
 
-`H`, `T`, `M`, `W` mantienen su letra en tap simple; en doble-tap envían un macro con la secuencia de 2 combos:
+**Plegado de código (VSCode / Antigravity)** — `H`, `T`, `M`, `W` mantienen su letra en tap simple; en doble-tap envían un macro con la secuencia de 2 combos:
 
 | Tecla | Doble-tap | Atajo enviado |
 |---|---|---|
@@ -103,6 +122,10 @@ Todo en `adjust_layer` (`config/corne.keymap`), sin modificar el resto de las ca
 | `W` | Plegar nivel actual | `⌘K` `⌘[` |
 
 Funciona en VSCode y en Antigravity (basado en el editor de VSCode, hereda los mismos atajos base).
+
+**Números rápidos** — `P` doble-tap = `4`, `Y` doble-tap = `5`.
+
+**`/` y `?`** — esa tecla (antes `KP_SLASH` fijo) ahora es `td9`: tap = `/`, doble-tap = `?`.
 
 ---
 

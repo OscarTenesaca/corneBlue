@@ -13,10 +13,13 @@
  * efecto configurado.
  *
  * chain-length: 27 LEDs por mitad (6 underglow + 21 per-key, confirmado por
- * conteo fisico). Con este valor correcto, solo encienden los 6 underglow
- * mas los primeros ~4 per-key (10 de 27) - no es un problema de conteo,
- * sino degradacion de la señal SPI a mitad de la cadena. Ver
- * spi-max-frequency mas abajo.
+ * conteo fisico). ESTADO ACEPTADO: solo encienden 10 de 27 (los 6
+ * underglow + los primeros ~4 per-key). Se investigo a fondo (hardware
+ * confirmado bien con QMK, sin errores de software en el log USB,
+ * frecuencia SPI probada en 2/4/8MHz sin cambios) sin encontrar la causa
+ * exacta - probablemente un problema de señal a nivel electrico fuera del
+ * alcance de config/devicetree. Ver README.md para el detalle completo y
+ * las alternativas evaluadas (driver GPIO custom, I2S, Discord de ZMK).
  */
 
 #include <dt-bindings/led/led.h>
@@ -50,13 +53,11 @@
 
         /* SPI */
         reg = <0>; /* ignorado, pero necesario para el binding SPI */
-        /* Experimentos con frecuencia SPI para el problema de LEDs que no
-         * encienden pasado el #10 de 27 (ver README.md): 4MHz (original) y
-         * 2MHz, sin cambios en ninguno. Probando ahora 8MHz. Nota: ya se
-         * descarto zephyrproject-rtos/zephyr#29877 como causa - ese bug se
-         * arregla usando "nordic,nrf-spim" (que ya usamos arriba), no con
-         * la frecuencia. */
-        spi-max-frequency = <8000000>;
+        /* Se probaron 2MHz, 4MHz y 8MHz para el problema de LEDs que no
+         * encienden pasado el #10 de 27 (ver README.md) - resultado
+         * identico en los 3, la frecuencia SPI no es la causa. Vuelto al
+         * valor de referencia original de ZMK (4MHz). */
+        spi-max-frequency = <4000000>;
 
         /* WS2812 / SK6812 */
         chain-length = <27>; /* 6 underglow + 21 per-key */
