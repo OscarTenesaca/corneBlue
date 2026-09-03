@@ -17,9 +17,3 @@ include:
     shield: corne_left
   - board: nice_nano_v2
     shield: corne_right
-  # TEMPORAL: firmware de reset de configuracion (borra bonds Bluetooth,
-  # estado RGB, seleccion de salida - NO toca el keymap). Flashear una vez
-  # en cada mitad, luego volver a flashear el firmware normal de arriba.
-  # Quitar esta entrada despues de usarla.
-  - board: nice_nano_v2
-    shield: settings_reset
