@@ -50,11 +50,13 @@
 
         /* SPI */
         reg = <0>; /* ignorado, pero necesario para el binding SPI */
-        /* Bajado de 4MHz a 2MHz: experimento para mitigar degradacion de
-         * señal SPI documentada en nRF52840 (zephyrproject-rtos/zephyr#29877)
-         * que corta la cadena a mitad de camino. Revertir a 4000000 si no
-         * cambia nada. */
-        spi-max-frequency = <2000000>;
+        /* Experimentos con frecuencia SPI para el problema de LEDs que no
+         * encienden pasado el #10 de 27 (ver README.md): 4MHz (original) y
+         * 2MHz, sin cambios en ninguno. Probando ahora 8MHz. Nota: ya se
+         * descarto zephyrproject-rtos/zephyr#29877 como causa - ese bug se
+         * arregla usando "nordic,nrf-spim" (que ya usamos arriba), no con
+         * la frecuencia. */
+        spi-max-frequency = <8000000>;
 
         /* WS2812 / SK6812 */
         chain-length = <27>; /* 6 underglow + 21 per-key */

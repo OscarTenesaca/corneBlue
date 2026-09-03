@@ -275,7 +275,7 @@
 
         default_layer {
             bindings = <
-                &kp ESC       &td0         &td1       &td2     &td_p_f4   &td_y_f5           &rgb_ug RGB_ON &kp G  &kp C     &kp R   &kp L     &kp BSPC
+                &kp ESC       &td0         &td1       &td2     &td_p_f4   &td_y_f5           &kp F &kp G  &kp C     &kp R   &kp L     &kp BSPC
                 &kp TAB       &kp A        &kp O      &kp E    &kp U   &kp I           &kp D &td_h_expand_all  &td_t_expand_current     &kp N   &kp S     &td9
                 &td13         &td5         &kp Q      &kp J    &kp K   &kp X           &kp B &td_m_fold_all  &td_w_fold_current     &kp V   &kp Z     &kp RET
                                                 &kp LGUI    &mo 1   &kp LCTRL          &kp SPACE      &mo 2   &td_ralt_adjust
