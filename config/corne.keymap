@@ -186,20 +186,20 @@
             bindings = <&kp M>, <&vscode_fold_all>;
         };
 
-        //? TAP DANCE (P normal / doble-tap = F4)
+        //? TAP DANCE (P normal / doble-tap = 4)
         td_p_f4: tap_dance_p_f4 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
-            bindings = <&kp P>, <&kp F4>;
+            bindings = <&kp P>, <&kp N4>;
         };
 
-        //? TAP DANCE (Y normal / doble-tap = F5)
+        //? TAP DANCE (Y normal / doble-tap = 5)
         td_y_f5: tap_dance_y_f5 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <185>;
-            bindings = <&kp Y>, <&kp F5>;
+            bindings = <&kp Y>, <&kp N5>;
         };
 
         //? TAP DANCE (RALT normal / doble-tap = RALT / triple-tap = toggle adjust_layer)
@@ -255,7 +255,7 @@
         * Default Layer: Alphanumeric and Symbols
         *
         * ,-----------------------------------------------------.							   ,-----------------------------------------------------.
-        * |  RAIS  |   ' "  |   , <  |   . >  |P/2xF4  |Y/2xF5  |							   |   F    |   G    |   C    |   R    |   L    |  BKSP   |
+        * |  RAIS  |   ' "  |   , <  |   . >  |P/2x4   |Y/2x5   |							   |   F    |   G    |   C    |   R    |   L    |  BKSP   |
         * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
         * |  LShift|   A    |   O    |   E    |   U    |   I    |							   |   D    |H/2xExpAll|T/2xExpCur| N    |   S    |   /     |
         * |--------+--------+--------+--------+--------+--------|							   |--------+--------+--------+--------+--------+---------|
